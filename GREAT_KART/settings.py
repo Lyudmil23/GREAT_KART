@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'GREAT_KART.category',
+    'GREAT_KART.accounts',
 ]
 
 MIDDLEWARE = [
@@ -71,6 +72,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'GREAT_KART.wsgi.application'
+
+AUTH_USER_MODEL = 'accounts.Account'
 
 
 # Database
