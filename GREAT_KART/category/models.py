@@ -7,7 +7,7 @@ class Category(models.Model):
         unique=True,
     )
 
-    slug = models.CharField(
+    slug = models.SlugField(
         max_length=100,
         unique=True,
     )
