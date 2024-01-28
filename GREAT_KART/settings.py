@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'GREAT_KART.category',
     'GREAT_KART.accounts',
     'GREAT_KART.store',
+    'GREAT_KART.carts',
 ]
 
 MIDDLEWARE = [
