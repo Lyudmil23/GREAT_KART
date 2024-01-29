@@ -1,5 +1,5 @@
 from django.contrib import admin
-from GREAT_KART.store.models import Product
+from GREAT_KART.store.models import Product, Variation
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -7,13 +7,29 @@ class ProductAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('product_name',)}
 
 
+class VariationAdmin(admin.ModelAdmin):
+    list_display = ('product', 'variation_category', 'variation_value', 'is_active')
+    list_editable = ('is_active', )
+    list_filter = ('product', 'variation_category', 'variation_value')
+
+
 admin.site.register(Product, ProductAdmin)
+admin.site.register(Variation, VariationAdmin)
 
 
-##2nd way for register
+##2ND WAY FOR REGISTER
 # @admin.register(Product)
 # class ProductAdmin(admin.ModelAdmin):
 #     list_display = ('product_name', 'price', 'stock', 'category', 'modified_date', 'is_available')
 #     prepopulated_fields = {'slug': ('product_name',)}
+
+# @admin.register(Variation)
+# class VariationAdmin(admin.ModelAdmin):
+#     list_display = ('product', 'variation_category', 'variation_value', 'is_active' )
+#     list_editable = ('is_active',)
+#     list_filter = ('product', 'variation_category', 'variation_value')
+
+
+
 
 
