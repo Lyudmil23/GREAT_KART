@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.contrib import messages
+from django.shortcuts import render, redirect
 
 from GREAT_KART.accounts.forms import RegistrationForm
 from GREAT_KART.accounts.models import Account
@@ -18,6 +19,8 @@ def register(request):
             user = Account.object.create_user(first_name=first_name, last_name=last_name, email=email, username=username, password=password)
             user.phone_number = phone_number
             user.save()
+            messages.success(request, 'Registration successful.')
+            return redirect('register')
     else:
         form = RegistrationForm()
     context = {
