@@ -75,3 +75,5 @@ class Variation(models.Model):
 
     def __str__(self):
         return self.variation_value
+
+
