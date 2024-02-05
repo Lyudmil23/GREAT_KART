@@ -1,5 +1,5 @@
 from django.contrib import admin
-from GREAT_KART.store.models import Product, Variation
+from GREAT_KART.store.models import Product, Variation, ReviewRating
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -15,6 +15,7 @@ class VariationAdmin(admin.ModelAdmin):
 
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Variation, VariationAdmin)
+admin.site.register(ReviewRating)
 
 
 ##2ND WAY FOR REGISTER
