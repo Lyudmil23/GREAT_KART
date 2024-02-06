@@ -7,6 +7,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from GREAT_KART.carts.models import CartItem
 from GREAT_KART.carts.views import _cart_id
 from GREAT_KART.category.models import Category
+from GREAT_KART.orders.models import OrderProduct
 from GREAT_KART.store.forms import ReviewForm
 from GREAT_KART.store.models import Product, ReviewRating
 
@@ -45,9 +46,22 @@ def product_detail(request, category_slug, product_slug):
     except Exception as e:
         raise e
 
+    if request.user.is_authenticated:
+         try:
+            orderproduct = OrderProduct.objects.filter(user=request.user, product_id=single_product.id).exists()
+         except OrderProduct.DoesNotExist:
+            orderproduct = None
+    else:
+        orderproduct = None
+
+    #Get the reviews
+    reviews = ReviewRating.objects.filter(product_id=single_product.id, status=True)
+
     context = {
         'single_product': single_product,
         'in_cart': in_cart,
+        'orderproduct': orderproduct,
+        'reviews': reviews,
     }
 
     return render(request, 'store/product-detail.html', context)
