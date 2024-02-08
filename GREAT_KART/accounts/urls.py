@@ -1,7 +1,7 @@
 from django.urls import path
 
 from GREAT_KART.accounts.views import register, login, logout, activate, dashboard, forgotPassword, \
-    resetpassword_validate, resetPassword, my_orders, edit_profile
+    resetpassword_validate, resetPassword, my_orders, edit_profile, change_password
 
 urlpatterns = [
     path('register/', register, name='register'),
@@ -17,5 +17,6 @@ urlpatterns = [
 
     path('my_orders/', my_orders, name='my_orders'),
     path('edit_profile/', edit_profile, name='edit_profile'),
+    path('change_password/', change_password, name='change_password'),
 
 ]
